@@ -4,7 +4,8 @@ package com.example.demo.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
-import org.springframework.data.annotation.Id;
+//import org.springframework.data.annotation.Id;
+
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -29,16 +30,21 @@ public class Course {
     @Column(name = "rating")
     private int rating;
 
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @JsonIgnoreProperties({"course"})
-    @OneToMany(mappedBy = "courses", fetch= FetchType.LAZY)
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @JsonIgnoreProperties({"courses"})
+    @JsonBackReference
+    @OneToMany(mappedBy = "course", fetch= FetchType.LAZY)
     private List<Booking> bookings;
 
-    public Course(String name, String town, int rating) {
+    public Course(String name, String town, Integer rating) {
         this.name = name;
         this.town = town;
         this.rating = rating;
         this.bookings = new ArrayList<>();
+    }
+
+    public Course() {
+
     }
 
 
@@ -66,11 +72,11 @@ public class Course {
         this.town = town;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
