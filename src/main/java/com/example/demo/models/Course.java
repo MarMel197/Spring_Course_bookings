@@ -74,11 +74,11 @@ public class Course {
         this.rating = rating;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
