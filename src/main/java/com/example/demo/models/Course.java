@@ -30,8 +30,8 @@ public class Course {
     @Column(name = "rating")
     private int rating;
 
-//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-//    @JsonIgnoreProperties({"courses"})
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @JsonIgnoreProperties({"course"})
     @JsonBackReference
     @OneToMany(mappedBy = "course", fetch= FetchType.LAZY)
     private List<Booking> bookings;
